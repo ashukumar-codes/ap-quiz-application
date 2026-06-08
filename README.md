@@ -48,8 +48,7 @@ The user can attempt quizzes, view scores, and check the leaderboard, while the 
 | NetBeans IDE         | Development Environment |
 
 
-#   Project Structure
-
+Project Structure
 AP-Quiz-Application/
 │
 ├── src/
@@ -152,7 +151,7 @@ The application uses file handling for storing:
 
 Clone the repository:
 
-git clone https://github.com/your-username/ap-quiz-application.git
+git clone https://github.com/ashukumar-codes/ap-quiz-application.git
 
 
 ## Step 2
