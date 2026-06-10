@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>AP Quiz Application</title>
+
+<style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Segoe UI',sans-serif;
+        scroll-behavior:smooth;
+    }
+
+    body{
+        background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+        color:white;
+        overflow-x:hidden;
+    }
+
+    .line{
+    width:140px;
+    height:6px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+    margin:18px auto 25px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(96,165,250,0.5);
+    }
+
+    /* NAVBAR */
+
+    nav{
+        width:100%;
+        padding:20px 8%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        position:fixed;
+        top:0;
+        z-index:1000;
+        background:rgba(0,0,0,0.2);
+        backdrop-filter:blur(12px);
+    }
+
+    nav h2{
+        font-size:28px;
+        color:#fff;
+    }
+
+    nav ul{
+        display:flex;
+        gap:30px;
+        list-style:none;
+    }
+
+    nav ul li a{
+        text-decoration:none;
+        color:white;
+        font-size:16px;
+        transition:0.3s;
+    }
+
+    nav ul li a:hover{
+        color:#60a5fa;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:120px 20px 60px;
+    }
+
+    .hero-content{
+        max-width:900px;
+    }
+
+    .hero h1{
+        font-size:70px;
+        margin-bottom:20px;
+        line-height:1.1;
+    }
+
+    .hero span{
+        color:#60a5fa;
+    }
+
+    .hero p{
+        font-size:22px;
+        color:#d1d5db;
+        margin-bottom:35px;
+        line-height:1.7;
+    }
+
+    .btn{
+        display:inline-block;
+        padding:15px 35px;
+        margin:10px;
+        border-radius:12px;
+        text-decoration:none;
+        font-size:18px;
+        font-weight:bold;
+        transition:0.4s;
+    }
+
+    .primary-btn{
+        background:#2563eb;
+        color:white;
+    }
+
+    .primary-btn:hover{
+        background:#1d4ed8;
+        transform:translateY(-5px);
+    }
+
+    .secondary-btn{
+        border:2px solid #60a5fa;
+        color:white;
+    }
+
+    .secondary-btn:hover{
+        background:#60a5fa;
+        color:black;
+        transform:translateY(-5px);
+    }
+
+    /* SECTION */
+
+    section{
+        padding:80px 8%;
+    }
+
+    .section-title{
+        text-align:center;
+        font-size:45px;
+        margin-bottom:50px;
+    }
+
+    /* CARDS */
+
+    .cards{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:30px;
+    }
+
+    .card{
+        background:rgba(255,255,255,0.08);
+        padding:35px;
+        border-radius:20px;
+        backdrop-filter:blur(12px);
+        transition:0.4s;
+        border:1px solid rgba(255,255,255,0.1);
+    }
+
+   .card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.12);
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+   }
+
+    .card h3{
+        margin-bottom:18px;
+        font-size:26px;
+    }
+
+    .card p{
+        color:#d1d5db;
+        line-height:1.8;
+        font-size:17px;
+    }
+
+    /* TECH STACK */
+
+    .tech{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+        margin-top:40px;
+    }
+
+    .tech span{
+        background:#1e40af;
+        padding:14px 22px;
+        border-radius:12px;
+        font-size:17px;
+        transition:0.3s;
+    }
+
+    .tech span:hover{
+        transform:scale(1.08);
+        background:#2563eb;
+    }
+
+    /* FOOTER */
+
+    footer{
+        text-align:center;
+        padding:35px;
+        background:rgba(0,0,0,0.25);
+        margin-top:40px;
+    }
+
+    footer p{
+        color:#d1d5db;
+        line-height:1.8;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+        nav{
+            flex-direction:column;
+            gap:15px;
+        }
+
+        .hero h1{
+            font-size:45px;
+        }
+
+        .hero p{
+            font-size:18px;
+        }
+
+        .section-title{
+            font-size:35px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+    <h2>AP Quiz</h2>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#tech">Tech Stack</a></li>
+        <li><a href="#modules">Modules</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            AP Quiz <span>Application</span>
+        </h1>
+
+        <p>
+            A modern desktop-based Quiz Management System developed using
+            Java Swing and Core Java featuring Admin Panel, Timer-Based Quiz,
+            Dynamic Question Management, Leaderboard System, and Interactive GUI.
+        </p>
+
+        <a href="https://github.com/ashukumar-codes/ap-quiz-application"
+           target="_blank"
+           class="btn primary-btn">
+           View Source Code
+        </a>
+
+        <a href="#features" class="btn secondary-btn">
+           Explore Features
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">Project Overview</h2>
+    <div class="line"></div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>About Project</h3>
+
+            <p>
+                AP Quiz Application is a desktop-based quiz system
+                developed using Java Swing and Core Java concepts.
+                The application allows users to participate in quizzes
+                while administrators can dynamically manage quiz questions.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Project Objective</h3>
+
+            <p>
+                The objective of this project is to provide a modern,
+                efficient, and user-friendly platform for conducting
+                digital quizzes with automated score calculation and
+                leaderboard management.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
+    <h2 class="section-title">Key Features</h2>
+    <div class="line"></div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Admin Panel</h3>
+            <p>
+                Secure admin authentication with Add, Edit,
+                Delete, and Dynamic Question Management functionality.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Quiz System</h3>
+            <p>
+                Interactive quiz interface with timer,
+                MCQ options, navigation controls,
+                and automatic score calculation.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Leaderboard</h3>
+            <p>
+                Displays user rankings according to quiz scores
+                and improves competitiveness among participants.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Modern GUI</h3>
+            <p>
+                Stylish Java Swing graphical interface with
+                responsive layouts, custom buttons,
+                and modern UI design.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TECH STACK -->
+
+<section id="tech">
+
+    <h2 class="section-title">Technologies Used</h2>
+    <div class="line"></div>
+
+    <div class="tech">
+
+        <span>Java</span>
+        <span>Core Java</span>
+        <span>Java Swing</span>
+        <span>AWT</span>
+        <span>File Handling</span>
+        <span>OOP</span>
+        <span>NetBeans</span>
+        <span>GUI Design</span>
+
+    </div>
+
+</section>
+
+<!-- MODULES -->
+
+<section id="modules">
+
+    <h2 class="section-title">Project Modules</h2>
+    <div class="line"></div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Login Module</h3>
+            <p>
+                Handles user and admin authentication process.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Rules Module</h3>
+            <p>
+                Displays quiz instructions and guidelines before starting.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Quiz Module</h3>
+            <p>
+                Conducts timer-based multiple-choice quiz examination.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Result Module</h3>
+            <p>
+                Generates score, percentage, and performance message.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>AP Quiz Application</h2>
+
+    <p>
+        Developed By Ashu Kumar
+    </p>
+
+</footer>
+
+
+</body>
+</html>
